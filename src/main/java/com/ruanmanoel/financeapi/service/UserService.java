@@ -19,4 +19,14 @@ public class UserService {
     public void criarUsuario(User user){
         userRepository.save(user);
     }
+
+    public Boolean validarLogin(String email, String senha){
+        User user = userRepository.findByEmail(email);
+
+        if(user == null) {
+            return false;
+        }
+
+        return user.getSenha().equals(senha);
+    }
 }
