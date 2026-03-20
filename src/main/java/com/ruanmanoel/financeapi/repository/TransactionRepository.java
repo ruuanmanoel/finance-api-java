@@ -4,6 +4,8 @@ import com.ruanmanoel.financeapi.model.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
     @Query("""
         SELECT SUM(
@@ -15,4 +17,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
         FROM Transaction t
     """)
     Double calcularSaldo();
+
+    List<Transaction> findByUserId(Long userId);
 }

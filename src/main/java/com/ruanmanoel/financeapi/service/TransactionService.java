@@ -23,4 +23,8 @@ public class TransactionService {
     public Transaction adicionarTransaction(Transaction transaction) {
         return transactionRepository.save(transaction);
     }
+
+    public List<Transaction> listarTransacoesPorUsuario(long userId) {
+        return transactionRepository.findByUserId(userId);
+    }
 }

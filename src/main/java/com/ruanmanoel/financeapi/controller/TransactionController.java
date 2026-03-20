@@ -15,7 +15,10 @@ public class TransactionController {
     TransactionService transactionService;
 
     @GetMapping
-    public List<Transaction> listarTransacoes() {
+    public List<Transaction> listarTransacoes(@RequestParam(required = false) Long userId) {
+        if (userId != null) {
+            return transactionService.listarTransacoesPorUsuario(userId);
+        }
         return transactionService.listarTransacoes();
     }
 
